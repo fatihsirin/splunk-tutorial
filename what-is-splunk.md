@@ -1,0 +1,2 @@
+- Splunk appears to be a platform that acts like Google for machine data
+    - I might be wrong about this. It might be possible to deploy Splunk locally, but IDK

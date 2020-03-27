@@ -1,0 +1,2 @@
+- https://docs.splunk.com/Documentation/Splunk/8.0.2/Admin/Configurationparametersandthedatapipeline
+- It might be good to understand the Splunk data pipeline first

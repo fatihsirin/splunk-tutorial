@@ -8,6 +8,7 @@
     - E.g. some software treats attribute keys as case-sensitive while others do not
 - Splunk configuration files can have stanzas with precedence
     - This is *not* standard in the INI format
+    - Some stanzas are case-sensitive while others are not; read the example files
 ## Example
 - `outputs.conf`
 ```

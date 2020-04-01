@@ -16,6 +16,8 @@
 - Some configuration modifications cannot be done via Splunk Web
 - The new configuration file copy should not copy anything from the default file. This must mean that Splunk treats all settings in the copied file as
   overrides
+- Remember that a configuration file only affects the data pipeline if it is set on the Splunk component that is handling the associated phase!
+  - Read the data-pipeline introduction.md notes 
 # null value
 - Delete the key entirely for an attribute to set the value of the attribute to null. Splunk will literally use the null value if it has highest
   precedence

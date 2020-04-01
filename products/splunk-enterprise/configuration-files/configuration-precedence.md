@@ -2,6 +2,7 @@
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Admin/Attributeprecedencewithinafile - within-file precedence
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Data/Specifyinputpathswithwildcards - ellipsis pattern in Splunk
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Admin/Propsconf - props.conf
+# These notes probably need their own directory
 # Introduction
 - Splunk determines the precedence of a configuration file, and its contained settings, via its directory location
     - Splunk also determines precedence based on somewhat complex lexicographical sorting (see source)
@@ -20,11 +21,13 @@
     - App local: `$SPLUNK_HOME/etc/apps/A/local/* ... $SPLUNK_HOME/etc/apps/z/local/*`
     - App default: `$SPLUNK_HOME/etc/apps/A/default/* ... $SPLUNK_HOME/etc/apps/z/default/*`
     - System default: `$SPLUNK_HOME/etc/system/default/*`
+- E.g. `inputs.conf` can exist in any of the above directories, but the configuration in the system local directory take precedence over those found
+  in any app directory (weird I know, but it's true))
 ## App/user context
 - If a configuration file exists in the app/user context, descending directory precedence order is:
     - Current user: `$SPLUNK_HOME/etc/users/*`
-    - Current app local: `$SPLUNK_HOME/etc/apps/Current_running_app/local/*`
-    - Current app default: `$SPLUNK_HOME/etc/apps/Current_running_app/default/*`
+    - Current app local: `$SPLUNK_HOME/etc/apps/<Current_running_app>/local/*`
+    - Current app default: `$SPLUNK_HOME/etc/apps/<Current_running_app>/default/*`
     - Exported settings of other apps (local, then default): `$SPLUNK_HOME/etc/apps/z/local/*, $SPLUNK_HOME/etc/apps/z/default/*, ... $SPLUNK_HOME/etc/apps/A/local/*, $SPLUNK_HOME/etc/apps/A/default/*`
     - System local: `$SPLUNK_HOME/etc/system/local/*`
     - System default: `$SPLUNK_HOME/etc/system/default/*`

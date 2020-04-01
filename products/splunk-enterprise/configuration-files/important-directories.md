@@ -12,7 +12,7 @@
 - `$SPLUNK_HOME/etc/system/default/*`: base default configuration
     - The files in this directory are never supposed to be modified, except when Splunk installs or updates itself
     - If a configuration setting isn't found in a file with higher precedence, then the setting within a file in this directory is used
-# /local vs. /default for an app
+# `/local` vs. `/default` for an app
 - Within an app's own configuration directory, `/default` has lower precedence than `/local`
 - If I'm developing an app, then I should store the final configuration of the app in `/default`
     - This is because `/local` is meant to be used by a final end-user, so it doesn't make sense for an app's default settings to be set there

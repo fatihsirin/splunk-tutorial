@@ -1,0 +1,15 @@
+- https://docs.splunk.com/Documentation/Splunk/8.0.2/Security/UseaccesscontroltosecureSplunkdata - introduction to section on role-based permissions
+# Introduction
+- Splunk has users. Each user can be assigned one or more roles
+- Splunk roles are used for two purposes:
+  - All users who have a role form a group. Permissions, such as read/write access to objects, are granted to these groups, not to individual users
+    - Double check this. Can individual users get specific permissions?
+  - Splunk roles have inherent capabilities which are granted to all users who have the role
+    - E.g. the capability to delete data is granted to the "can_delete" role
+- Role configuration is stored in `authorize.conf`
+  - By default, the the file `$SPLUNK_HOME/etc/system/default/authorize.conf` creates 5 roles:
+    - admin
+    - can_delete
+    - power
+    - splunk-system-role
+    - user

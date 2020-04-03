@@ -16,7 +16,13 @@
   - `$SPLUNK_HOME/etc/system/bin/`
   - `$SPLUNK_HOME/etc/apps/$YOUR_APP/bin/`
   - `$SPLUNK_HOME/bin/scripts/`
-  - Alternatively, a `*.path` file can go in one of the above directories and point to the real script, which may reside anywhere on the file system
+- Alternatively, a `*.path` file can go in one of the above directories and point to the real script, which may reside anywhere on the file system
+### *.path file example
+- Don't do this yet. I don't have a consumable script yet
+`x.path`
+```
+x
+```
 ## Choose an `inputs.conf`
 - Placing the script is only part of the process. Now that the script has been placed, there *must* be an `inputs.conf` file that references the
   script

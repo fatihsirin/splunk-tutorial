@@ -1,0 +1,1 @@
+- https://docs.splunk.com/Documentation/Splunk/8.0.2/Data/Aboutindexedfieldextraction - start of the section on index-time field extraction

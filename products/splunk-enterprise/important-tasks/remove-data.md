@@ -22,18 +22,25 @@
 - One or all indexes will be cleaned, depending on the command-line arguments
 - Typically, this command is run before re-indexing data
 - The command does not work on clusterd indexes
-- This command is overkill. Using the `delete` command is faster and is usually sufficient
+- This command is overkill. Using the `delete` command in Splunk Web is faster and is usually sufficient
 ## Examples
+- Is there no command to do what I want: delete custom field extractions, sourcetypes, data inputs, etc.?
 - `$ splunk clean all`
   - Delete all events that were indexed, host tags, source type aliases, user accounts, etc. from all indexes
-  - It at leasts gives me a prompt before cleaning
   - This delete all users so that I cannot login to the website anymore!
+  - Even this does *not* delete any configuration files! Therefore custom field extractions, sourcetypes, data inputs, etc. are preserved
+- `$ splunk clean eventdata`
+  - Delete the following from all indexes: event data
+  - Does not delete field extractions, custom sourcetypes, data inputs, etc.
+- `$ splunk clean globaldata`
+  - Does not delete field extractions, custom sourcetypes, data inputs, etc.
 ## Helpful background
 - Running $ splunk list index reveals the following indexes in my local Splunk Enterprise installation: _audit, _internal, _introspection,
   _telemetry, _thefishbucket, history, main, splunklogger, and summary
   - Listing the details of each index should be in separate notes
 - After deleting everything, there will be no users
   - Fix this by editing `$SPLUNK_HOME/etc/system/local/user-seed.conf`
+- Hash a password with `$ splunk hash-passwd <password>`
 ```
 [user_info]
 USERNAME = <user name>

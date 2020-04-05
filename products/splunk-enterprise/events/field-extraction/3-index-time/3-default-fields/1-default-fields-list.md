@@ -19,14 +19,14 @@
 ### Basic default fields
 - These fields provide the most basic tagging information that transforms a data point into an event:
   - `host`: the hostname or IP address of the network device that generated the event
-  - `index`: the name of the index within which the event is located (e.g. "main")
+    - E.g. "Austins-MacBook-Air.local"
+  - `source`: the path of the file, directory, stream, or other input whence the input came
+    - E.g. ".../dummy-csv.csv"
+  - `sourcetype`: the format of the data input whence the event came
+  - `index`: the name of the index within which the event is located
+    - E.g. "main"
   - `linecount`: the number of lines an event contains before it was indexed
   - `punct`: the punctuation field that was extracted from the event
-  - `source`: the name of the file, stream, or other input whence the input came
-  - `sourcetype`: the format of the data input whence the event came
-    - This is Splunk's version of a data type
-    - It doesn't matter what the actual data semantically means (e.g. a food price CSV is the same as a SCADA CSV)
-      - (Actually this isn't necessarily true)
   - `splunk_server`: the name of the Splunk server that contains the event (useful in distributed topology)
   - `timestamp`: the time at which the event occured
     - Presumably, this reflects any changes to an inherent timestamp that was in an event, if one existed to begin with

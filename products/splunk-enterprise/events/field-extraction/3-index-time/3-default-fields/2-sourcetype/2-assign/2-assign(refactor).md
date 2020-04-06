@@ -4,6 +4,9 @@
   Splunk Web to assign a sourcetype based on a data input
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Data/Bypassautomaticsourcetypeassignment#Specify_source_type_for_a_source - workflow for directly
   editing `props.conf` to assign a sourcetype based on a data source (not a data input)
+
+# These notes should be refactored into several files
+
 # Introduction
 - Splunk searches though different files based on precedence to index incoming data with a particular sourcetype
 - These steps and the corresponding files are listed below in descending precedence order:

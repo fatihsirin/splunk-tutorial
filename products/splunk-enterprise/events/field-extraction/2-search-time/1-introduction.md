@@ -9,7 +9,7 @@
   - Add with the "Field extractions" page in Splunk Web
     - This is good for viewing field extractions, but not as good as the Field Extractor for creating them
   - Directly edit `props.conf`
-    - See `edit-config-files` notes
+    - See `3-edit-config-files` notes
 - Field extractions created through the Field Extractor or the "Field extractions" page are only available to their creators until shared with others
   via new permissions
 # Field extraction types

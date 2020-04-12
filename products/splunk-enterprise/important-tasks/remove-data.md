@@ -48,6 +48,6 @@ HASHED_PASSWORD = <your password>
 ```
 - It is also possible to add a user with the CLI, but this won't work if I deleted all users because I have to be logged-in to add a user! 
   - Syntax: `$ splunk add user <username> -password "<password>" -role <role>`
-    - E.g. `$ splunk add user austin -password '1q2w3e4r' -full-name 'Austin Chang' -role admin`
+    - E.g. `$ splunk add user foo -password '1q2w3e4r' -full-name 'Foo Bar' -role user`
       - The `-full-name` flag is optional
       - `<role>` can be "admin", "power", or "user"

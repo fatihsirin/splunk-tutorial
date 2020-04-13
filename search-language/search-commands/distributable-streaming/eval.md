@@ -8,8 +8,17 @@
   - Boolean result: `eval` can evaluate one or more expressions and then feed that true or false result into another function to apply to each event
     - E.g. `... | eval ["stats" | "chart" | "timechart"] <command>(eval(<boolean expression>)) AS <new field>`
     - The result of the other function must be renamed with an `AS` clause
+## Syntax
 - The single equals sign, "=", is equivalent to the traditional double equals sign, "=="
-- Within an `eval` expression, a string literal in single quotes is a field name while a string literal in double quotes is just a string literal 
+  - This is true in `search` as well, not just in `eval` 
+### Left-hand side of expression
+- When generating a calculated field, the left-hand side of an `eval` expression is always a field name
+- This field name can be unquoted or may be in double quotes
+  - The field name *should not* be in single quotes because those single quotes will be part of the actual field name!
+    - E.g. `... | eval 'Line ID'=5` will create a new field "'Line ID'"!!!
+### Right-hand side of expression
+- On the right-hand side of an `eval` expression, a string literal in single quotes is a field name while a string literal in double quotes is just a
+  string literal 
   - E.g `sourcetype="scada" | eval x = typeof('Power _MVA')` has "x = Number" because the 'Power _MVA' field stores numeric values. However,
     `sourcetype="scada" | eval x = typeof("Power _MVA")` evaluates to "x = String" because "Power _MVA" is just a string literal!x
 # Arguments

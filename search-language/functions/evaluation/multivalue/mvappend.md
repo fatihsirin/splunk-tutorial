@@ -4,6 +4,7 @@
 # Arguments
 ## Required
 - At least one uni-value field name, multi-value field name, or string
+  - Numbers are invalid arguments
 # Examples
 - `sourcetype="scada" | eval pair=mvappend(origin_bus_id, 'Origin Voltage _PU') | sort _time "Line ID"`
 ```

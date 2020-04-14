@@ -5,6 +5,7 @@
 ## Required
 - A single field name that *can* be a multivalue field
 # Examples
+## Expand multivalue field into two new events
 - `sourcetype="oms" | eval buses=split('Bus Affected', "-") | mvexpand buses`
 ```
 ----------------------------------------------------------------------------------------------------------------------
@@ -17,8 +18,19 @@
 | <2 more rows>                                                                                                      |
 ----------------------------------------------------------------------------------------------------------------------
 ```
-- For the 3 returned events, expand any event whose "buses" field is a multivalue field into however many new events it takes to make each event take
-  a single value from that multivalue field. Remove the multivalue field event once it has been expanded into the new events
-  - The `split` function created the multivalue event that isn't directly shown here
+- For the 3 returned events, expand any event whose "buses" field is a multivalue field into however many new events it takes to assign each new event
+  a single value from that multivalue field
+  - The `split` function created the event with the multivalue field. That process isn't directly shown here
 - The net result is that a total of four events are returned: two were created from a single event with a multivalue field while two were left alone
   because their "buses" field was a uni-value field
+## Expand multivalue field into four new events
+```
+sourcetype="scada" 
+| eval "Power _MVA"=if('Line ID'="1-4", mvappend('Power _MVA', "150r", "250r", "300r"), 'Power _MVA')
+| mvexpand "Power _MVA"
+| eval "Line ID"=case('Power _MVA'="150r", "5-6,6-7 line rating", 'Power _MVA'="250r", "1-4,4-5,7-8,2-8,8-9,4-9 line rating", 'Power _MVA'="300r", "3-6 line rating", 1=1, 'Line ID')
+| eval "Power _MVA"=case('Power _MVA'="150r", 150, 'Power _MVA'="250r", 250, 'Power _MVA'="300r", 300, 1=1, 'Power _MVA')
+| timechart span=15m limit=0 first("Power _MVA") BY "Line ID"
+```
+- Most of the work is being done with `eval` here, but `mvexpand` plays an important role in generating 3 new fake events to represent the line
+  ratings at every measurement time interval

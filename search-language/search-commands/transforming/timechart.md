@@ -14,7 +14,8 @@
 ## Required
 - x
 ## Optional 
-- x
+- `limit`: A limit to the number of `BY` groups that will split the events within each time bin
+  - Use `limit=0` if `timechart` is being annoying and grouping events under an "OTHER" ID because of a large number of `BY` groups in the data
 ### \<bin-options>
 - Defaults to `bins=100`
 - A \<bin-option> argument is optional only because a default of `bins=100` is supplied to the `timechart` command. So in reality, \<bin-options> is a

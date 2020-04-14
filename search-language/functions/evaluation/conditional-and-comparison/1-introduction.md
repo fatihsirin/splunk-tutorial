@@ -1,3 +1,4 @@
+- https://docs.splunk.com/Documentation/Splunk/8.0.2/SearchReference/ConditionalFunctions
 # Conditional functions are not for filtering events
 - A conditional function *must* return a value. It's a function after all! Therefore, it cannot be used to filter out events
   - Use the `where` clause for filtering events

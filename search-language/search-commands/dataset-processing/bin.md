@@ -6,7 +6,11 @@
   - This makes sense because bucketing by time can be done as events are retrieved from the index
 # Arguments
 ## Required
-- x
+- A single field name whose values should be divided into buckets
+## Optional
+- An alias to create a new field name with the binned values
+- A \<bin-options> specifier, just like with `timechart`
+  - 
 # Examples
 ## Histogram of the collective voltage readings of all buses
 ```
@@ -26,3 +30,5 @@ sourcetype="scada"
   `bin` interval, then count how many times that interval appears
 ## Histogram of the voltage readings of single bus
 - `sourcetype="scada" | where 'Line ID'="1-4" | bin "Destination Voltage _PU" bins=10 | stats count by "Destination Voltage _PU"`
+- This lets Splunk choose the bucket size, which it nicely chooses to be 0.01
+  - I can explicitly use a bin of this size by using `span=0.01` instead of `bins=10`

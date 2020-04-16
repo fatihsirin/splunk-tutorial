@@ -12,7 +12,10 @@
     - In other words, the bin encapsulates a timestamp and all the time up to, but not including, the next timestamp
 # Arguments
 ## Required
-- x
+- One *or more* statistical functions
+- Statistical functions can have individual `as` clauses, are only separated by spaces, and share a single `by` clause at the end
+- Use caution: *every* statistical field that is generated will be split by the `by` clause
+  - E.g. two statistical fields with 9 groups results in 18 lines!
 ## Optional 
 - `limit`: A limit to the number of `BY` groups that will split the events within each time bin
   - Use `limit=0` if `timechart` is being annoying and grouping events under an "OTHER" ID because of a large number of `BY` groups in the data
@@ -104,5 +107,3 @@
 ```
 - For the 864 returned events, calculate a new field called "voltage_diff" and get the first value of voltage_diff for each time bin, by line_id
 - Return the same as above 
-## Show eval expression result
-- ???

@@ -28,7 +28,7 @@ sourcetype="scada"
     | eval "Power _MVA"=250 
     | timechart span=15m first("Power _MVA") as "1-4,4-5,7-8,2-8,8-9,4-9 line rating"]
 ```
-- Each subsearch gets all 864 events are replaces the "Power _MVA" field in each event with a dummy value, such as 300. Then, the subsearch is joined
+- Each subsearch gets all 864 events and replaces the "Power _MVA" field in each event with a dummy value, such as 300. Then, the subsearch is joined
   to the main search
   - This is a horrible command in terms of performance
 - The result is that the `timechart` command charts multiple time series at the same time. Neat!

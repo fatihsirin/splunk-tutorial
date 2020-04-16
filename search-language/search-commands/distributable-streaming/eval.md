@@ -33,6 +33,9 @@
       - I cannot actually generate a calculated field by using a boolean expression with `eval` alone. If I want to do that, I must use the `if`
         function
     - This will work: `... | eval foo = if(1=0, "equal", "not equal")`
+- If multiple expressions are provided, they must be separated by commas
+## Optional
+- x
 # Examples
 ## `eval` is never used for filtering events
 - `sourcetype="oms" | eval type="line_outage"`

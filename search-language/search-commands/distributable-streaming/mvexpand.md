@@ -34,3 +34,4 @@ sourcetype="scada"
 ```
 - Most of the work is being done with `eval` here, but `mvexpand` plays an important role in generating 3 new fake events to represent the line
   ratings at every measurement time interval
+- This approach is preferred to using multiple statistical functions with `timechart` because the `by` clause is done for every statistical function!

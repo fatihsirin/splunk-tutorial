@@ -1,17 +1,17 @@
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Admin/Configurationfiledirectories
 - https://answers.splunk.com/answers/37729/deployment-config-files-in-local-or-default.html
 # Important directories
-- These directories are listed in descending order of precedence
-- Keep in mind that some configuration files will never exist in certain directories
-    - E.g. a configuration file that exists in a global context will never exist in the `$SPLUNK_HOME/etc/users` directory
-- `$SPLUNK_HOME/etc/users`: user-specific configuration
-- `$SPLUNK_HOME/etc/apps/<app_name>/[local|default]`: app-specific configuration
+- These directories are listed in descending order of precedence:
+  - `$SPLUNK_HOME/etc/users`: user-specific configuration
+  - `$SPLUNK_HOME/etc/apps/<app_name>/[local|default]`: app-specific configuration
     - /local contains end-user app-specific configuration
     - /default contains app-specific default configuration
-- `$SPLUNK_HOME/etc/system/local`: app-wide configuration
-- `$SPLUNK_HOME/etc/system/default/*`: base default configuration
+  - `$SPLUNK_HOME/etc/system/local`: app-wide configuration
+  - `$SPLUNK_HOME/etc/system/default/*`: base default configuration
     - The files in this directory are never supposed to be modified, except when Splunk installs or updates itself
     - If a configuration setting isn't found in a file with higher precedence, then the setting within a file in this directory is used
+- Keep in mind that some configuration files will never exist in certain directories
+    - E.g. a configuration file that exists exclusively in the global context will never exist in the `$SPLUNK_HOME/etc/users` directory
 # `/local` vs. `/default` for an app
 - Within an app's own configuration directory, `/default` has lower precedence than `/local`
 - If I'm developing an app, then I should store the final configuration of the app in `/default`

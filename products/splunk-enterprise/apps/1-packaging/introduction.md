@@ -1,11 +1,27 @@
 - https://dev.splunk.com/enterprise/docs/releaseapps/packagingtoolkit
+# Introduction
+- 
+
+
+
+
+# Inherent Packaging configuration features
+- Splunk's default packaging configuration by default allows an app to conform to  
+## 
+
 # Components
-- There are three key logical components to understand when packaging an app: the app manifest, partitioning, and input groups
+- There are three key key components to understand when packaging an app: the app manifest, partitioning, and input groups
 ## App manifest
+- 
+
+
+
+
 - The app manifest stores the locations of app components and necessary dependencies
   - Dependencies allow the Packaging Toolkit to perform dependency resolution
-  - 
-- An app doesn't *need* an app manifest because Splunk can derive one from other configuration files, but an app should have one
+
+
+- An app doesn't *need* an app manifest because 
 ## Partitioning
 - Paritioning is a process where the Splunk Packaging Toolkit takes an app's source code and divides it
   - By default, the Toolkit divides an app into at least three distinct deployment packages: one for search heads, one for indexers, and one for

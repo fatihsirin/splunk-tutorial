@@ -1,0 +1,1 @@
+- https://docs.splunk.com/Documentation/Splunk/8.0.3/DistSearch/Configuredistributedsearch - add search peers

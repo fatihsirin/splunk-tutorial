@@ -12,7 +12,6 @@
     - The "deleted" events are simply made permanently invisible to any future searches
       - No user, even the admin, will ever be able to see the data again
 ## Steps
-- Confirm that 
 - Run a search that generates *only* the events that I want to be deleted
   - Be sure the search is correct!
 - Once the results are verified, pipe the results into the `delete` command
@@ -35,7 +34,7 @@
 - `$ splunk clean globaldata`
   - Does not delete field extractions, custom sourcetypes, data inputs, etc.
 ## Helpful background
-- Running $ splunk list index reveals the following indexes in my local Splunk Enterprise installation: _audit, _internal, _introspection,
+- Running `$ splunk list index` reveals the following indexes in my local Splunk Enterprise installation: _audit, _internal, _introspection,
   _telemetry, _thefishbucket, history, main, splunklogger, and summary
   - Listing the details of each index should be in separate notes
 - After deleting everything, there will be no users

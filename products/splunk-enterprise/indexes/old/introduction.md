@@ -1,0 +1,2 @@
+- https://docs.splunk.com/Documentation/Splunk/8.0.3/Indexer/Aboutmanagingindexes - index documentation
+- https://www.splunk.com/en_us/blog/tips-and-tricks/app-design-patterns-creating-indexes.html - app creates index

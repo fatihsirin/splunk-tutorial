@@ -1,1 +1,0 @@
-- https://docs.splunk.com/Documentation/Splunk/latest/Admin/Deployappsandadd-ons

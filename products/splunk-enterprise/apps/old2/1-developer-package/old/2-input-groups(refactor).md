@@ -10,19 +10,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 - Do I want to refactor these notes into the example-centered style? I need to successfully write an input group first. That's what I should have done
   before even writing these notes. That's why these notes took so long
 # Logical partitioning

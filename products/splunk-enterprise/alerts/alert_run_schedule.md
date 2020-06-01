@@ -1,0 +1,3 @@
+- It's annoying that Splunk always has to be running in order to use scheduled searches effectively
+  - E.g. if I turn off Splunk before its daily alert is scheduled to run, the alert won't run!
+  - This isn't that important right now. Right now, I need to figure out what to search for to generate an unexpected topology change alert

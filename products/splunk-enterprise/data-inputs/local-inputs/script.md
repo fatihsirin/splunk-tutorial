@@ -9,9 +9,10 @@
 ```
 - The minimum permissions for the .sh file are 500 (owner read and execute)
   - I assume that since I started Splunk as myself, the Splunk process has my permissions (i.e. owner execute)
+- This actual script is terrible because the actual script and its dependencies almost always should be included inside of the Splunk app
 #### /Applications/Splunk/etc/apps/untopchan2/local/inputs.conf 
 ```
-[script://$SPLUNK_HOME/etc/apps/untopchan2/bin/run_untopchan.sh]
+[script://./bin/run_untopchan.sh]
 disabled = 1
 index = electrical_utility_data
 interval = 90
@@ -27,7 +28,7 @@ source = run_untopchan.sh
 - The minimum permissions for the .path file are 400 (owner read)
 #### /Applications/Splunk/etc/apps/untopchan2/local/inputs.conf
 ```
-[script://$SPLUNK_HOME/etc/apps/untopchan2/bin/invoke-untopchan.path]
+[script://./bin/invoke-untopchan.path]
 disabled = 1
 index = electrical_utility_data
 interval = 90
@@ -43,6 +44,11 @@ source = run_untopchan.sh
 # Syntax
 - Any environment variables will be expanded into their actual values within Splunk
   - If searching for a source, search for the full path (expand the environment variable)
+## Deployment considerations
+- Always use relative paths within _all_ stanzas when possible
+  - E.g. `[script://./bin/stream-csv.py]` can be found on regardless of the name of the app while
+    `[script://$SPLUNK_HOME/etc/apps/untopchan/bin/stream-csv.py]` will only work if the app hasn't been partitioned into sub-apps like
+    "untopchan-_search_heads" and "untopchan-_forwarders"
 # Files
 - A script can be located directly within once of Splunk's approved script directories (see first source)
   - In this case, Splunk will simply invoke the script directly as configured in `inputs.conf`

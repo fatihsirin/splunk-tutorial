@@ -1,9 +1,4 @@
 - https://docs.splunk.com/Documentation/SplunkCloud/8.0.2001/SearchReference/MultivalueEvalFunctions#split.28X.2C.22Y.22.29
-# Background
-- `split` splits a uni-value field into a multivalue field based on the provided delimiter
-# Arguments
-## Required
-- A field and a delimiter
 # Examples
 - `sourcetype="oms" | eval buses=split('Bus Affected', "-")`
 ```
@@ -21,3 +16,8 @@
 - For each of the three events, split the "Bus Affected" field into a multivalue field called "buses"
   - If the field cannot be split, leave the field as a uni-value field
 - Return the three modified events
+# Background
+- `split` splits a uni-value field into a multivalue field based on the provided delimiter
+# Arguments
+## Required
+- A field and a delimiter

@@ -1,1 +1,3 @@
-- https://docs.splunk.com/Documentation/Splunk/8.0.2/SearchReference/ConversionFunctions - list of conversion functions
+- https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/ConversionFunctions - list of conversion functions
+# Introduction
+- The `convert` function is actually a distributable streaming search command, not an evaluation conversion function

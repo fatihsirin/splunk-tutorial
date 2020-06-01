@@ -1,4 +1,33 @@
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Knowledge/Automatickey-valuefieldextractionsatsearch-time
+# Examples
+## Mismatched KV_MODE
+### `/Applications/Splunk/etc/apps/untopchan/local/props.conf`
+```
+[circuitComponent]
+KV_MODE = xml
+```
+- This is a custom sourcetype called "circuitComponent" 
+- When this sourcetype is used with some JSON raw data, Splunk doesn't find any additional interesting fields
+  - Splunk always seems to generate "index", "linecount", "punct", and "splunk_server" in addition to host, source and sourcetype. These must be
+    either index-time field extractions or something else built-in
+    - Splunk's interesting fields are not magic after all!
+## Correct KV_MODE
+### `/Applications/Splunk/etc/apps/untopchan/local/props.conf`
+```
+[circuitComponent]
+KV_MODE = json
+```
+- This is the same sourcetype as was used in the first example
+- When the same JSON raw data is supplied, Splunk generates a whole host of interesting fields that actually come from the raw data!
+  - E.g. "rated_power", "state_of_charge", etc.
+- When I change the `KV_MODE` back to "none", the fields disappear (verified)
+- When I delete `KV_MODE` entirely, the sourcetype implicitly defaults to `KV_MODE = auto`, so the interesting fields reappear (verified)
+# Purpose
+- This type of field extraction _is_ what generates Splunk's "interesting fields" in the search results
+  - Interesting fields are those fields that appear in at least 20% of the results returned by a search
+- Splunk does not provide explicit situations where automatic key-value extraction is preferred to inline or transform field extractions
+  - This type of extraction is more convenient than the other two. That's pretty much its only winning trait
+    - E.g. if some event had 100 JSON keys, I would never want to write explicit field extractions to convert every JSON key into a field
 # Extraction mechanism
 - A `KV_MODE` attribute is defined (or not!) within a stanza in `props.conf`
 - Automatic key-value extraction cannot be explicitly configured to extract specific fields
@@ -9,12 +38,6 @@
 - When `KV_MODE` is "auto" or "auto_escaped", automatic JSON field extraction occurs alongside other automatic key-value field extractions
   - If I want to disable JSON field extraction without changing the `KV_MODE` value from "auto", add `AUTO_KV_JSON=false` to the stanza
     - When not set, `AUTO_KV_JSON` defaults to true. 
-# When to use
-- This type of field extraction _is_ what generates Splunk's "interesting fields" in the search results
-  - Interesting fields are those fields that appear in at least 20% of the results returned by a search
-- Splunk does not provide explicit situations where automatic key-value extraction is preferred to inline or transform field extractions
-  - This type of extraction is more convenient than the other two. That's pretty much it's only winning trait
-    - E.g. if some event had 100 JSON keys, I would never want to write explicit field extractions to convert every JSON key into a field
 # Files
 - Automatic key-value field extractions are written entirely within `props.conf`
 - This type of field extraction cannot be created within Splunk Web
@@ -35,26 +58,4 @@
   - json: if using this value, don't also set `INDEXED_EXTRACTIONS = JSON` because the same fields will be extracted twice: once at search time and
     once at index time
   - other weird random values that I can't find documentation for
-# Examples
-## Mismatched KV_MODE
-### `/Applications/Splunk/etc/apps/untopchan/local/props.conf`
-```
-[circuitComponent]
-KV_MODE = xml
-```
-- This is a custom sourcetype called "circuitComponent" 
-- When this sourcetype is used with some JSON raw data, Splunk doesn't find any additional interesting fields
-  - Splunk always seems to generate "index", "linecount", "punct", and "splunk_server" in addition to host, source and sourcetype. These must be
-    either index-time field extractions or something else built-in
-    - Splunk's interesting fields are not magic after all!
-## Correct KV_MODE
-### `/Applications/Splunk/etc/apps/untopchan/local/props.conf`
-```
-[circuitComponent]
-KV_MODE = json
-```
-- This is the same sourcetype, but modified
-- When the same JSON raw data is supplied, Splunk generates a whole host of interesting fields that actually come from the raw data!
-  - E.g. "rated_power", "state_of_charge", etc.
-- When I change the `KV_MODE` back to "none", the fields disappear (verified)
-- When I delete `KV_MODE` entirely, the sourcetype implicitly defaults to `KV_MODE = auto`, so the interesting fields reappear (verified)
+

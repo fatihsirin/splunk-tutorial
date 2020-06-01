@@ -15,6 +15,7 @@ sourcetype = realtime_scada
 ```
 - `inputs.conf` must set the `index` and `source` attributes of events
   - If the `index` isn't explicitly set, it default to "main" or whatever other index I've chosen to be the default
+    - The `defaultDatabase` attribute in `indexes.conf` is what actually sets the default index that is used
   - If the `source` isn't explicitly set, it defaults to the input path
     - In this example, source defaults to "/Applications/Splunk/etc/apps/untopchan2/bin/run_untopchan.sh"
   - Neither `props.conf` nor `transforms.conf` can set these attributes

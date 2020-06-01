@@ -1,6 +1,6 @@
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Search/Aboutsearch - two types of searches
 - https://docs.splunk.com/Documentation/Splunk/8.0.2/Search/Typesofcommands - six types of search commands
-- https://docs.splunk.com/Documentation/Splunk/8.0.2/SearchReference/Commandsbytype - search commands grouped by category
+- https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Commandsbytype - search commands grouped by category
 # Introduction
 - All of the notes in this directory are about *search* commands. Statistical commands like `count` are not search commands, so they are listed here.
   Therefore, putting documentation on statistical functions elsewhere is *not* redundant
@@ -18,7 +18,7 @@
 - These two broad types are actually composed of six types
 - A command may fall under multiple types
   - E.g. Many transforming commands are also non-streaming commands
-## Streaming 
+## Streaming
 - Streaming commands operate on single events. They get one event as input and output zero or one event
 - Streaming commands fall into two types: distributable streaming and centralized streaming
 ## Non-streaming

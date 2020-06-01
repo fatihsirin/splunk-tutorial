@@ -1,0 +1,1 @@
+- https://docs.splunk.com/Documentation/Splunk/latest/AdvancedDev/ModAlertsIntro - start of documentation on how to create a custom alert action

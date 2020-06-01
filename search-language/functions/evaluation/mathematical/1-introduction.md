@@ -1,1 +1,1 @@
-- https://docs.splunk.com/Documentation/Splunk/8.0.2/SearchReference/MathematicalFunctions
+- https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/MathematicalFunctions

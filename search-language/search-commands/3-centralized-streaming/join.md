@@ -1,15 +1,5 @@
 - https://docs.splunk.com/Documentation/SplunkCloud/8.0.2001/SearchReference/Join
 - https://answers.splunk.com/answers/568034/chart-over-multiple-fields.html
-# Background
-- `join` is a centralized streaming command when a set of fields with which to join is provided
-  - Otherwise, it is `dataset processing` command
-- Yes, I *can* simply join multiple `timechart` results together, but using `BY` in the outer and inner searches does not work like I want
-# Arguments
-## Required
-- A subsearch
-## Optional
-- A comma-separated list of fields upon which to join
-- One or more \<join options>
 # Examples
 ## Join subsearches as line ratings
 ```
@@ -37,3 +27,14 @@ sourcetype="scada"
     "Power _MVA" field of every targeted event into a multivalued field, then split the multivalued field into new events. Finally, change the "Line
     ID" of the new events into a line rating name depending on the "Power _MVA" field
     - See `mvexpand.md` notes
+  - Even better, learn how to use Splunk dashboard inputs to allow users to toggle lines and their ratings on and off
+# Background
+- `join` is a centralized streaming command when a set of fields with which to join is provided
+  - Otherwise, it is `dataset processing` command
+- Yes, I *can* simply join multiple `timechart` results together, but using `BY` in the outer and inner searches does not work like I want
+# Arguments
+## Required
+- A subsearch
+## Optional
+- A comma-separated list of fields upon which to join
+- One or more \<join options>

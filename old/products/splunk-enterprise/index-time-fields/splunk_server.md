@@ -1,0 +1,2 @@
+- This index-time field indicates which indexer an event was retrieved from
+  - This is particularly useful in a distributed deployment

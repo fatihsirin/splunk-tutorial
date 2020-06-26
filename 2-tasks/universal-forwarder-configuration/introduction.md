@@ -1,0 +1,1 @@
+- https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Configuretheuniversalforwarder

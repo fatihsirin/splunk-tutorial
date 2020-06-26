@@ -34,6 +34,6 @@ thawedPath = $SPLUNK_DB/my_test_index/thaweddb
   - Initializes the index within Splunk on start-up if the index doesn't exist
 # Files
 - An index is created entirely by a valid stanza in `indexes.conf`
-- The default app partitioning command will give indexers _and_ forwarders a copy of the `indexes.conf` defined in an app
+- The default app partitioning command will give indexer _and_ search heads (but not forwarders) a copy of the `indexes.conf` defined in an app
   - There is no way to prevent this. I'll have to configure the search head as a forwarder and disable indexing on it if I don't want duplicate
     indexes (see `disable-search-head-indexing.md`)
